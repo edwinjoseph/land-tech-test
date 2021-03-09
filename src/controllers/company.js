@@ -31,4 +31,8 @@ module.exports = {
 
     return findCompanyData(company, db);
   },
+  all: async (query, db) => {
+    const companies = await db.allCompanies(query);
+    return companies.map(transformCompany);
+  }
 };

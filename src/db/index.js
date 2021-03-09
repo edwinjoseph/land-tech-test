@@ -4,6 +4,16 @@ const companyRelations = getFromFile('company_relations');
 const landOwnership = getFromFile('land_ownership');
 
 module.exports = {
+  allCompanies: (query) => {
+    return new Promise((resolve) => {
+      const limit = Math.min(Math.max(query.limit, 10), 50);
+      const skip = Math.min(query.skip, limit);
+
+      const companies = companyRelations.slice(skip, skip + limit);
+
+      resolve(companies);
+    })
+  },
   getCompany: (id) => {
     return new Promise((resolve, reject) => {
       const company = companyRelations.find(c => c.companyId === id);
@@ -29,6 +39,16 @@ module.exports = {
 
       resolve(companies);
     });
+  },
+  allLand: (query) => {
+    return new Promise((resolve) => {
+      const limit = Math.min(Math.max(query.limit, 10), 50);
+      const skip = Math.min(query.skip, limit);
+
+      const land = landOwnership.slice(skip, skip + limit);
+
+      resolve(land);
+    })
   },
   getLand: (id) => {
     return new Promise((resolve, reject) => {

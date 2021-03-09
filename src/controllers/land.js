@@ -27,4 +27,8 @@ module.exports = {
       owner,
     }
   },
+  all: async (query, db) => {
+    const companies = await db.allLand(query);
+    return companies.map(transformLand);
+  }
 }
