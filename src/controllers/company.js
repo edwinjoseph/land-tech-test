@@ -21,6 +21,7 @@ const findCompanyData = async (data, db, level = 1) => {
 }
 
 module.exports = {
+  transformCompany,
   getCompany: async (id, db) => {
     const company = await db.getCompany(id);
 
