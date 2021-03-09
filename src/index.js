@@ -1,6 +1,7 @@
 const express = require('express');
 const db = require('./db');
 const company = require('./controllers/company');
+const land = require('./controllers/land');
 const app = express();
 const port = 3000;
 
@@ -11,6 +12,15 @@ app.get('/', (_, res) => {
 app.get('/ownership/company/:id', async (req, res) => {
   try {
     const data = await company.getCompany(req.params.id, db);
+    res.json({ data });
+  } catch (err) {
+    res.status(404).json({ data: null });
+  }
+});
+
+app.get('/ownership/land/:id', async (req, res) => {
+  try {
+    const data = await land.getLand(req.params.id, db);
     res.json({ data });
   } catch (err) {
     res.status(404).json({ data: null });
