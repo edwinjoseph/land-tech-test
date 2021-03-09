@@ -109,3 +109,40 @@ with open("./land_ownership.csv") as csv:
 ```
 
 _Don't forget to re-read the Guidelines at the top of the page!_
+
+
+# Documentation
+
+## Prerequisites
+- Node JS (v15.8.0)
+- Yarn (v1.22.10)
+
+## Setup
+```bash
+  # Install packages
+  yarn
+
+  # Start Node with Nodemon to watch for changes
+  yarn start:watch
+```
+
+## Routes
+```bash
+# view basic information for companies - paginated using query params: limit and skip
+/ownership/company
+
+# view all information for a specific company
+/ownership/company/COMPANY_ID 
+
+# view basic information for lands - paginated using query params: limit and skip
+/ownership/land
+
+# view all information for a specific land
+/ownership/land/LAND_ID 
+```
+
+## Tests
+```bash
+  # Using Jest for tests
+  yarn test
+```
